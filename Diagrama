@@ -1,0 +1,14 @@
+Inicio de juego
+  Opcion buena: Ejemplo 1
+    Continuar con el juego: Decision 2
+      Opcion especial: Consigues un objeto para una decision futura #decision2 #objeto1
+      Opcion normal: Continuas como si nada
+        Decision 3
+          (#decision2)
+          Opcion normal: Continua sin mayores tardanzas
+            (#decision3)
+          Opcion que usa objeto: Verificar si puede usar el objeto conseguido
+            Con objeto: Continuar #decision3
+            Sin objeto: Falla y termina el juego
+  Opcion mala: Ejemplo 2
+    Fin de juego: Indica al jugador que eligio mal y termino el nivel
