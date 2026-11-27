@@ -1,14 +1,30 @@
-Inicio de juego
-  Opcion buena: Ejemplo 1
-    Continuar con el juego: Decision 2
-      Opcion especial: Consigues un objeto para una decision futura #decision2 #objeto1
-      Opcion normal: Continuas como si nada
-        Decision 3
-          (#decision2)
-          Opcion normal: Continua sin mayores tardanzas
-            (#decision3)
-          Opcion que usa objeto: Verificar si puede usar el objeto conseguido
-            Con objeto: Continuar #decision3
-            Sin objeto: Falla y termina el juego
-  Opcion mala: Ejemplo 2
-    Fin de juego: Indica al jugador que eligio mal y termino el nivel
+Te Ofrecen ser corsario. Aceptas?
+  Opcion buena: Si
+    Continuar con el juego: Durante una mision terminas tu barco es atacado y ambos terminan naufragando.
+      Despiertas en una isla y encuentras a un hombre. Que haces?
+        Opcion mala: Sigues con tu camino. #x
+          Fin del juego: Decides adentrate en la isla, y por tener apariencia de pirata unos guerdias te identifican y terminan ejecutandote.  
+        Opcion buena: Decides intentar robar sus pertenecias.
+            El hombre despierta y al ver que intentas robarle intenta alejarse de ti huyendo hacia la isla.
+              Opcion mala: Dejarlo en paz si sigues tu camino.
+              (#x)
+              Opcion buena: Perseguirlo
+                Al perseguirlo, atrapas al asesino y pregunta por tu nombre y tambien dice el suyo, en ese momento inicia una pelea, que haces:
+                  Opcion buena: Peleas y ganas
+                    Revisas sus pertenencias y encuentras una carta #objcarta
+                      Opcion buena: Abres y lees la carta.
+                        En la carta se describe que el asesino de nombre Duncan Walpole por un trabajo pedido por el Rey y le ofrecen una recompensa al llegar a la Habana .traje
+                      Opcion mala: Ignoras la carta. .traje
+                      (.traje)
+                        Decides robarle el traje y suplantar a Duncan Walpole
+                          Te adentras en la isla y despues de explorar un poco descubres a un hombre que esta siendo confundido por un corsario a punto de ser ejecutado. Le ayudas?
+                            Opcion mala: No lo ayudas y muere
+                              Descubres que ese hombre llego en un barco y lo tomas. .barco
+                            Opcion buena: lo ayudas salvandole la vida
+                              El hombre se presenta como Stede Bonet. Te dice que se dirige a La Habana. Al tener el mismo destino deciden irse juntos. .barco
+                                (.barco)
+                                  Te vas en su barco.
+                  Opción mala: Te rindes
+                    Fin del juego: Te rindes per termina matandote.
+  Opcion mala: No
+    Fin de juego: Te quedas a vivir en tu pueblo natal
