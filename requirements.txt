@@ -1,0 +1,2 @@
+questionary
+windows-curses
