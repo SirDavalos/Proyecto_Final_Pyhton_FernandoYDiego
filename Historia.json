@@ -1,0 +1,7 @@
+[
+  {
+    "dialogo": "Capitulo 1 decision 1",
+    "texto": "Esto es un texto de JSON de ejemplo",
+    "opciones": ["Continuar", "No continuar"]
+  }
+]

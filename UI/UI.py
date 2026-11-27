@@ -34,7 +34,7 @@ def menu_inicial(stdscr, titulo, opciones):
 
         # Título
         stdscr.addstr(1, 40, titulo[:ancho - 4], colores["CIAN"] | curses.A_BOLD)
-        stdscr.addstr(2, 2, "Hora de tomar una decision..."[:ancho - 4], curses.A_DIM)
+        stdscr.addstr(2, 2, "Elige una opcion"[:ancho - 4], curses.A_DIM)
 
         # Filas disponibles para opciones
         visibles = max(1, alto - 4)

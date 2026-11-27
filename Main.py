@@ -1,7 +1,6 @@
-import curses
 import sys
 from curses import wrapper
-
+import Historia
 from UI import UI
 
 def main(stdscr):
@@ -21,10 +20,7 @@ def main(stdscr):
         stdscr.getch()
         sys.exit(0)
 
-    fila = UI.mostrar_dialogo(stdscr, "Edward Kenway", attr = curses.A_BOLD)
-    fila = UI.mostrar_dialogo(stdscr, "Esto es un dialogo de ejemplo", y = fila +1)
-
-    UI.esperar_tecla(stdscr, fila + 1)
+    Historia.ejecutar_historia(stdscr)
 
     stdscr.erase()
 
