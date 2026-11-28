@@ -1,5 +1,7 @@
 import curses
 import time
+from operator import index
+
 
 def inicializar_colores():
 
@@ -175,6 +177,69 @@ def mostrar_dialogo(stdscr, texto, y = 2, x = 2, velocidad = 0.03, attr = 0):
     stdscr.nodelay(False)
     curses.flushinp()
     return y + len(lineas)
+
+def mostrar_decision(stdscr, titulo, texto, opciones,  velocidad = 0.03):
+    curses.flushinp()
+    curses.curs_set(0)
+    stdscr.keypad(True)
+
+    colores = inicializar_colores()
+
+    idx = 0
+    offset = 0
+    instantaneo = False
+
+    while True:
+        stdscr.erase()
+        alto, ancho = stdscr.getmaxyx()
+
+        #Mostrar el dialogo
+        stdscr.addstr(0, 2, titulo[:ancho - 4], colores["CIAN"] | curses.A_BOLD)
+        fila_fin = mostrar_dialogo(stdscr, texto, y = 2, velocidad= velocidad)
+
+        instantaneo = True
+
+        inicio = min(fila_fin + 1, alto - 2)
+        visibles = max(1, alto - inicio - 2)
+
+        #Mostar las opciones
+        while True:
+            if idx < offset:
+                offset = idx
+            elif idx >= offset + visibles:
+                 offset = idx - visibles + 1
+
+            # Dibujar opciones
+            for i in range(offset, min(offset + visibles, len(opciones))):
+                fila = 3 + (i - offset)
+                texto = f" {opciones[i]} "[:ancho - 4]
+
+                if i == idx:
+                    attr = colores["NEGRO_VERDE"] if curses.has_colors() else curses.A_REVERSE
+                    stdscr.addstr(fila, 2, "❯" + texto, attr)
+                else:
+                    stdscr.addstr(fila, 2, " " + texto)
+
+            # Indicadores de scroll
+            if offset > 0:
+                stdscr.addstr(2, ancho - 3, "▲")
+            if offset + visibles < len(opciones):
+                stdscr.addstr(alto - 1, ancho - 3, "▼")
+
+            stdscr.refresh()
+
+            tecla = stdscr.getch()
+
+            if tecla in (curses.KEY_UP, ord('k')):
+                idx = (idx - 1) % len(opciones)
+            elif tecla in (curses.KEY_DOWN, ord('j')):
+                idx = (idx + 1) % len(opciones)
+            elif tecla in (curses.KEY_ENTER, 10, 13):
+                return opciones[idx]
+            elif tecla in (27, ord('q')):  # Esc o q
+                return None
+            elif tecla == curses.KEY_RESIZE:
+                break  # el bucle redibuja con el nuevo tamaño
 
 def esperar_tecla(stdscr, y, x=2):
 

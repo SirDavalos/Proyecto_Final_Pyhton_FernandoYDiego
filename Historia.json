@@ -1,7 +1,17 @@
 [
   {
     "dialogo": "Capitulo 1 decision 1",
+    "titulo": "El barco desconocido",
     "texto": "Esto es un texto de JSON de ejemplo",
-    "opciones": ["Continuar", "No continuar"]
+    "opciones": [
+      {
+        "id": "opc1",
+        "texto": "Continuar"
+      },
+      {
+        "id": "opc2",
+        "texto": "No continuar"
+      }
+    ]
   }
 ]
